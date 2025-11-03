@@ -17,16 +17,6 @@ export default async function Home({ params, }: { params: Promise<{ id: string }
     notFound();
   }
 
-    async function DeleteVolunteer(formData: FormData){
-
-    }
-
-    async function UpdateVolunteer(formData: FormData){
-
-    }
-
-
-
     return(<>
     <h2>{volunteerData.phone}</h2>
     </>);

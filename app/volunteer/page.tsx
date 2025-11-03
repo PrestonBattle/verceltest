@@ -5,9 +5,8 @@ import VolunteerTable from "@/components/Table/VolunteerTable";
 import VolunteerFilterModal from "@/components/FilterModal/VolunteerFilterModal";
 import { Volunteer } from "@/types/volunteer";
 import { useState, useEffect } from "react";
-import Link from 'next/link';
-import { Button } from "@mantine/core";
 import { Skeleton } from "@mantine/core";
+import { PostgrestError } from "@supabase/supabase-js";
 
 export default function Volunteers() {
     const [isFilterOpen, setFilterState] = useState(false);
@@ -27,14 +26,13 @@ export default function Volunteers() {
 
             const { data, error } = await supabase
                 .from('Volunteer')
-                .select('*') as { data: Volunteer[] | null; error: any };
+                .select('*') as { data: Volunteer[] | null; error: PostgrestError | null };
 
             if (error) {
                 console.error('Error fetching volunteers:', error.message);
             } else {
                 setVolunteers(data);
                 setInitialVolunteers(data);
-                console.log(initialVolunteers);
                 setLoading(false);
             }
         };
@@ -74,7 +72,7 @@ export default function Volunteers() {
     }) {
 
         let filterDay: string | null = null;
-        let days: string[] = [];
+        const days: string[] = [];
 
 
         for (const day in filterData) {

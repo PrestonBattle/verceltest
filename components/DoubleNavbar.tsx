@@ -1,20 +1,12 @@
 "use client";
 import { useState } from 'react';
-import {
-  IconCalendarStats,
-  IconDeviceDesktopAnalytics,
-  IconFingerprint,
-  IconGauge,
-  IconHome2,
-  IconSettings,
-  IconUser,
-} from '@tabler/icons-react';
 import { Title, Tooltip, UnstyledButton } from '@mantine/core';
 import { MantineLogo } from '@mantinex/mantine-logo';
 import classes from './DoubleNavbar.module.css';
 
+
 interface NavItem {
-  icon?: any;
+  icon?: React.ComponentType<{ size?: number; stroke?: number }>;
   name: string;
   href?: string;
   onClick?: () => void;
@@ -66,7 +58,7 @@ export function DoubleNavbar({ navItems }: DoubleNavbarProps) {
         className={classes.mainLink}
         data-active={link.name === active || undefined}
       >
-        <link.icon size={22} stroke={1.5} />
+        {link.icon && <link.icon size={22} stroke={1.5} />}
       </UnstyledButton>
     </Tooltip>
   ));

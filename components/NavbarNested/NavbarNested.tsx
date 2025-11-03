@@ -1,12 +1,3 @@
-import {
-  IconAdjustments,
-  IconCalendarStats,
-  IconFileAnalytics,
-  IconGauge,
-  IconLock,
-  IconNotes,
-  IconPresentationAnalytics,
-} from '@tabler/icons-react';
 import { Code, Group, ScrollArea } from '@mantine/core';
 import { LinksGroup } from '../NavbarLinksGroup/NavbarLinksGroup';
 //import { UserButton } from '../UserButton/UserButton';
@@ -14,12 +5,12 @@ import { LinksGroup } from '../NavbarLinksGroup/NavbarLinksGroup';
 import classes from './NavbarNested.module.css';
 
 interface NestedNavbarProps {
-  icon?: any;
+  icon?: React.ComponentType<{ size?: number }>;
   navItems: NavItem[];
 }
 
 interface NavItem {
-  icon: React.FC<any>;
+  icon: React.ComponentType<{ size?: number }>;
   label: string;
   link?: string;
   onClick?: () => void;

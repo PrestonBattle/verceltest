@@ -1,7 +1,7 @@
 'use client'
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Button } from "@mantine/core";
+
 type FilterData = {
     monday: boolean;
     tuesday: boolean;
@@ -18,30 +18,16 @@ type volunteerFilterModalProps = {
     onSubmit: (filterData: FilterData) => void;
 }
 
-type filterData = {
-        monday: false,
-        tuesday: false,
-        wednesday: false,
-        thursday: false,
-        friday: false,
-        saturday: false,
-        sunday: false,
-    }
-
 
 export default function VolunteerFilterModal({ isOpen, onExit, onSubmit }: volunteerFilterModalProps) {
+    const [selectedDays, setDays] = useState<string[]>([]);
 
     if (!isOpen) return null;
 
-    const [selectedDays, setDays] = useState<String[]>([]);
-    const [selectedTime, setTimes] = useState<String[] | null>(null);
-
-    
-
     const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-    const times = ['Mornings(8:30 AM to 12 PM)', 'Afternoon(12 PM to 4 PM)', 'Evening(4 PM to 8 PM)'];
+    // Removed unused times variable
 
-    const handleSelect = (day: String) => {
+    const handleSelect = (day: string) => {
         setDays(prev => prev.includes(day)
             ? prev.filter(d => d !== day)
             : [...prev, day]);
@@ -99,7 +85,4 @@ export default function VolunteerFilterModal({ isOpen, onExit, onSubmit }: volun
 
         </div>
     )
-
-
-
 }

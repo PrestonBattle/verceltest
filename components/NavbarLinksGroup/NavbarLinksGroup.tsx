@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { IconChevronRight } from '@tabler/icons-react';
-import { Box, Collapse, Group, Text, ThemeIcon, UnstyledButton } from '@mantine/core';
+import { Box, Collapse, Group, ThemeIcon, UnstyledButton } from '@mantine/core';
 import classes from './NavbarLinksGroup.module.css';
 
 interface LinksGroupProps {
-  icon: React.FC<any>;
+  icon: React.ComponentType<{ size?: number }>;
   label: string;
   link?: string; 
   onClick?: () => void;

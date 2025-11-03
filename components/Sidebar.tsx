@@ -23,8 +23,8 @@ export default function Sidebar({ title, navItems }: SidebarProps) {
 
             <div>{title}</div>
             {navItems.map((item) => (
-                <div>
-                    <NavItem key={item.name} item={item} />
+                <div key={item.name}>
+                    <NavItem item={item} />
                 </div>
             ))}
         </div>
@@ -74,14 +74,4 @@ function NavItem({ item, depth = 1 }: { item: NavItems, depth?: number }) {
         </div>
     );
 
-    function handleClicks({ value }: {value: Boolean}){
-        
-        
-
-    }
 }
-
-"${px-} py-2 hover:bg-gray-700"
-
-
-
